@@ -1,19 +1,21 @@
-# Network Analysis
-### Creating reusable network analysis pipeline
+# Tracking the development of Topics in Trump Tweets
+### Unsupervised machine learning
 **This project was developed as part of the spring 2021 elective course Cultural Data Science - Language Analytics at Aarhus University.** <br>
 
-__Task:__ The task for this project is to build a command-line tool which will take any weighted edgelist as input, providing that edgelist is saved 
-as a CSV with the column headers "nodeA", "nodeB" and perform a simple network analysis. The network will be based on entities appearing together in 
-the same documents. For any weighted edgelist given as an input, the script should be used to create a network visualization, which will be saved in 
-a folder called viz. It should also create a data frame showing the degree, betweenness, and eigenvector centrality for each node. It should save this 
-as a CSV in a folder called output. <br>
+__Task:__ The task for this project is to train an LDA model on data from Twitter to extract structured information that can provide insight into the development of topics in Trumps tweets.
+
+For this assignment, I chose to examine the development of topics depicted in Donald Trump's tweets. For this, I found a dataset on Kaggle (https://www.kaggle.com/codebreaker619/donald-trump-tweets-dataset). The tweets are from around 2011 (with a few tweets from 2009 and 2010) to the beginning of 2021. I wanted to see if it was possible to train a model that could detect a development in trends that Trump wrote about.
+
+In the data folder there is a csv file with tweets from Trumps twitter account up until he was banned in the beginning of 2021. The output of the python script is also provided in the data folder in the created output folder. This contains a visualization of the created topics saved as an interactive html file. Furthermore, the scripts creates a lineplot that illustrates Trumps development of topics across time. This is saved as a png file.
+
+The script development_of_trump.py is in the src and it takes the filepath to a csv as input. Optionally, you can define the filename of the lineplot, the number of topics and the types of words you wish to examine. If nothing is chosen for the three parameters, defaults are set instead.
 
 A weighted edgelist of the data fake-or-real-news.csv (from Kaggle https://www.kaggle.com/rchitic17/real-or-fake) can be found in the data folder.
 Using spacy, all mentions of persons was extracted and it was counted how many times two names co-occured. 
 So, the weighted edgelist hold the name of two people (nodeA and nodeB) and number of times they co-occured in a document (weight).
 
 The script is located in the src folder and can be run without specifying further parameters. 
-The repository also contains the results from running the network analysis. 
+The repository also contains the results from running the unsupervised topic model. 
 In the viz folder, two plots can be found visualizing the network of the edgelist with and without labels when filtered at 500. 
 In the output folder, the centralities measures for the network are saved as a csv. <br> 
 
@@ -29,7 +31,7 @@ After creating the environment, it will have to be activated before running the 
 ```
 After running these two lines of code, the user can commence running the script. <br>
 
-### How to run network.py <br>
+### How to run development_of_trump.py <br>
 The script network.py can run from command line without additional input. 
 However, the user can specify path to the weighted edgelist csv file, a minimum threshold for filtering away edge pairs and 
 whether to include labels or not on the network visualization.
