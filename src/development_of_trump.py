@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Specify file path of the csv file of Trump tweets and name of the output graph. You can also specify number of topics and what kind of words you want to investigate. The default is 10 topics and word types nouns and verbs. The output will be a perplexity and coherence score printed in the terminal as well as a print of the 10 most prominent words constituting each topic. Furthermore, a plot of the development of topics within Trumps tweets will be saved in a folder called out in the path relative to the working directory i.e., location of the script.
+Specify file path of the csv file of Trump tweets and name of the output graph. You can also specify number of topics and what kind of words you want to investigate. The default is 10 topics and word types nouns and verbs. The output will be a perplexity and coherence score printed in the terminal as well as a print of the 10 most prominent words constituting each topic. Furthermore, a plot of the development of topics within Trumps tweets will be saved in a folder called output in the parent directory to the working directory.
 Parameters:
     filepath: str <filepath-of-csv-file>
     output_filename: str <name-of-png-file>
@@ -145,9 +145,16 @@ class Tweet_development:
         # remove retweets
         data = df[df["isRetweet"]== "f"]
         
+        
+        # replace the time stamp in the date to only keep year, month and day
+        data["date"] = data["date"].replace(to_replace ='\d{2}:\d{2}:\d{2}', value = '', regex = True)
+  
+        # Sort based on date to get tweets in chronological order
+        data_sorted = data.sort_values(by = "date")
+
+
         # make a corpus of the contents column only
-        self.tweets = data['text'].values.tolist()
-       
+        self.tweets = data_sorted['text'].values.tolist()
 
     def process_data(self):
         '''
@@ -158,8 +165,8 @@ class Tweet_development:
         print("\n[INFO] Building bigram and trigram models and fitting it to the data")
         
         # Build the bigram and trigram models keeping the ones that have at least three occurrences 
-        bigram = gensim.models.Phrases(self.tweets, min_count=3, threshold=75) # higher threshold fewer phrases.
-        trigram = gensim.models.Phrases(bigram[self.tweets], threshold=75)  
+        bigram = gensim.models.Phrases(self.tweets, min_count=3, threshold=100) # higher threshold fewer phrases.
+        trigram = gensim.models.Phrases(bigram[self.tweets], threshold=100)  
 
         # fitting the models to the data
         bigram_mod = gensim.models.phrases.Phraser(bigram)
