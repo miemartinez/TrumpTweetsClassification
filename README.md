@@ -48,6 +48,8 @@ __Example:__ <br>
 The code has been developed in Jupyter Notebook and tested in the terminal on Jupyter Hub on worker02. I therefore recommend cloning the Github repository to worker02 and running the scripts from there. 
 
 ### Results:
+The results of the final model had a perplexity score of -7.85 and a coherence score of 0.29. The coherence score got higher as I increased number of topics. However, as this interferred with the interpretability of the lineplot I decided to only include 10 topics in the final run.
+
 When looking at the three most dominant topics (topics 1-3 in the html file), the topics that Trump has been most occupied with seems to be about i) the elections (with a focus on tax cuts and jobs), ii) being the target of a media witch hunt, and iii) a topic of presidential campaign, denial and rebuttals to news statements and a bit about the stock market as well. The latter topic is a bit harder to label as it contains many different features but it includes words like "respect", "women", "refuse" and "source". Looking through the tweets, these words are often related to rebuttals of something from the media press. <br>
 All three topics line up with my expectation and knowledge about Trump and his agenda as a politician. <br>
 
