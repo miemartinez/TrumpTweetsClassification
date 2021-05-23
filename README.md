@@ -4,7 +4,7 @@
 
 __Task:__ The task for this project is to examine the development of topics depicted in Donald Trump's tweets by training a Latent Dirichlet allocation (LDA) model on data from his Twitter account. 
 
-For this project, I found a dataset on Kaggle (https://www.kaggle.com/codebreaker619/donald-trump-tweets-dataset). The tweets are from around 2011 (with a few tweets from 2009 and 2010) to the beginning of 2021 (when he was banned from Twitter). I wanted to see if it was possible to train a model that could detect a development in trends that Trump wrote about. The csv file can also be found in the data folder. <br>
+The data used for this project can be found on Kaggle (https://www.kaggle.com/codebreaker619/donald-trump-tweets-dataset). The tweets are from around 2011 (with a few tweets from 2009 and 2010) to the beginning of 2021 (when he was banned from Twitter). I wanted to see if it was possible to train a model that could detect a development in trends that Trump wrote about. The csv file can also be found in the data folder. <br>
 
 The output of the topic model is provided in the output folder. This contains a visualization of the created topics saved as an interactive html file. Furthermore, the scripts creates a lineplot that illustrates Trumps development of topics across time. This is saved as a png file and can also be seen in the bottom of this README. 
 
